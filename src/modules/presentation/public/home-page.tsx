@@ -1,9 +1,9 @@
-import DarkMode from "@/components/shared/dark-mode";
 import { Button } from "@/components/ui/button";
 import { routes } from "@/config/routes";
+
 import Link from "next/link";
 
-const HomePage = () => {
+const HomePage = async () => {
   return (
     <div className="p-4">
       <h1>Welcome love and abundance</h1>

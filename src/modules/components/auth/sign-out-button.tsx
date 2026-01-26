@@ -8,8 +8,23 @@ import { Loader2, LogOut } from "lucide-react";
 import { toast } from "sonner";
 import { signOut } from "@/lib/auth-client";
 import { routes } from "@/config/routes";
+import { cn } from "@/lib/utils";
 
-const SignOutButton = () => {
+const SignOutButton = ({
+  className,
+  variant = "destructive",
+}: {
+  className?: string;
+  variant?:
+    | "link"
+    | "default"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | "destructive"
+    | null
+    | undefined;
+}) => {
   const [pendingLogout, startLogoutTransition] = useTransition();
   const router = useRouter();
 
@@ -32,9 +47,9 @@ const SignOutButton = () => {
 
   return (
     <Button
-      variant="destructive"
+      variant={variant}
       size="sm"
-      className=""
+      className={cn(className)}
       onClick={handleLogout}
       disabled={pendingLogout}
     >

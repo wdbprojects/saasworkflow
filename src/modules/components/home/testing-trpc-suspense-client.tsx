@@ -7,7 +7,7 @@ const TestingTRPCSuspenseClient = () => {
   const trpc = useTRPC();
   const { data: users } = useSuspenseQuery(trpc.getUsers.queryOptions());
 
-  return <code>{JSON.stringify(users)}</code>;
+  return <code>{JSON.stringify(users, null, 2)}</code>;
 };
 
 export default TestingTRPCSuspenseClient;
