@@ -8,7 +8,6 @@ import { Badge } from "@/components/ui/badge";
 
 const HeaderMain = async () => {
   const session = await auth.api.getSession({ headers: await headers() });
-  console.log(session);
 
   return (
     <header className="bg-background fixed top-0 right-0 z-50 h-auto w-full border-b px-2 py-2">

@@ -1,5 +1,6 @@
 "use client";
 
+import SignOutButton from "@/modules/components/auth/sign-out-button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -16,12 +17,15 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { sidebarData } from "@/config/data";
+// import { sidebarData } from "@/config/data";
+import { ISidebarProps } from "@/config/types";
 import { BadgeCheck, Bell, CreditCard, LogOut } from "lucide-react";
 
-const NavUser = () => {
-  const { user } = sidebarData;
+const NavUser = ({ user }: ISidebarProps) => {
+  // const { user } = sidebarData;
   const { isMobile } = useSidebar();
+
+  console.log(user);
 
   return (
     <SidebarMenu>
@@ -35,15 +39,15 @@ const NavUser = () => {
             >
               <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage
-                  src={user.avatar ? user.avatar : ""}
-                  alt={user.name}
+                  src={user?.image ?? ""}
+                  alt={user?.name}
                   className="rounded-lg"
                 />
                 <AvatarFallback>SJ</AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{user.name}</span>
-                <span className="truncate text-xs">{user.email}</span>
+                <span className="truncate font-medium">{user?.name}</span>
+                <span className="truncate text-xs">{user?.email}</span>
               </div>
             </SidebarMenuButton>
           </DropdownMenuTrigger>
@@ -56,13 +60,17 @@ const NavUser = () => {
             >
               <DropdownMenuLabel className="p-0 font-normal">
                 <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                  <Avatar className="h-8 w-8 rounded-lg">
-                    <AvatarImage src={user.avatar} alt={user.name} />
-                    <AvatarFallback className="rounded-lg">SJ</AvatarFallback>
+                  <Avatar className="h-7 w-7 rounded-none bg-transparent">
+                    <AvatarImage
+                      src={user?.image ?? ""}
+                      alt={user?.name}
+                      className="rounded-none"
+                    />
+                    <AvatarFallback className="">SJ</AvatarFallback>
                   </Avatar>
                   <div className="grid flex-1 text-left text-sm leading-tight">
-                    <span className="truncate font-medium">{user.name}</span>
-                    <span className="truncate text-xs">{user.email}</span>
+                    <span className="truncate font-medium">{user?.name}</span>
+                    <span className="truncate text-xs">{user?.email}</span>
                   </div>
                 </div>
               </DropdownMenuLabel>
@@ -83,8 +91,7 @@ const NavUser = () => {
               </DropdownMenuGroup>
               <DropdownMenuSeparator />
               <DropdownMenuItem className="cursor-pointer">
-                <LogOut />
-                Log out
+                <SignOutButton className="w-full" variant="destructive" />
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenuGroup>

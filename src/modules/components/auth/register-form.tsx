@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { FilePen, Loader2, LogIn } from "lucide-react";
+import { FilePen, Loader2 } from "lucide-react";
 import { routes } from "@/config/routes";
 import Link from "next/link";
 import Image from "next/image";
